@@ -10,7 +10,7 @@ export function initialState (props) {
 }
 
 export function render ({ props, state }, setState) {
-  const { items, onChange } = props;
+  const { items, onChange, removeOnHide } = props;
   const { activeTabIndex } = state;
 
   const buttons = items.map(({ text }, index) => {
@@ -27,7 +27,11 @@ export function render ({ props, state }, setState) {
     </div>);
   });
 
-  const panels = items.map(({ content }, index) => (
+  const panels = removeOnHide
+    ? <div class='tab-control__tab-panel tab-control__tab-panel__active'>
+          {items[activeTabIndex].content}
+        </div>
+    : items.map(({ content }, index) => (
     <div class={['tab-control__tab-panel', {'tab-control__tab-panel__active': activeTabIndex === index}]}>
       {content}
     </div>

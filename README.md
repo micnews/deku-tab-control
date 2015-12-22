@@ -31,3 +31,6 @@ export function render () {
 
 #### active-tab-index
 Set initial active tab index
+
+### removeOnHide
+If set to true, only the active tab content will be rendered.
