@@ -5,7 +5,7 @@ import element from 'magic-virtual-element';
 
 export function initialState (props) {
   return {
-    activeTabIndex: props['active-tab-index'] || 0
+    activeTabIndex: props.activeTabIndex || 0
   };
 }
 

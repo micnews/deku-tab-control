@@ -97,7 +97,7 @@ test('tab control removeOnHide', function (t) {
   `);
 
   t.equal(renderString(tree(
-    <TabControl items={items} removeOnHide={true} active-tab-index={1} />
+    <TabControl items={items} removeOnHide={true} activeTabIndex={1} />
   )), tsml`
     <div class="tab-control">
       <div class="tab-control__tab-buttons">

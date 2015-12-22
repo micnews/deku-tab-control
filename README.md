@@ -22,14 +22,14 @@ export function render () {
     console.log(`you clicked index ${clickedIndex}`)
   };
 
-  return <TabControl active-tab-index={0} items={items} onChange={onChange} />;
+  return <TabControl activeTabIndex={0} items={items} onChange={onChange} removeOnHide={true} />;
 }
 
 ```
 
 ### Attributes
 
-#### active-tab-index
+#### activeTabIndex
 Set initial active tab index
 
 ### removeOnHide
