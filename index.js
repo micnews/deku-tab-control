@@ -10,15 +10,22 @@ export function initialState (props) {
 }
 
 export function render ({ props, state }, setState) {
-  const { items } = props;
+  const { items, onChange } = props;
   const { activeTabIndex } = state;
 
-  const buttons = items.map(({ text }, index) => (
-    <div class={['tab-control__tab-button', {'tab-control__tab-button__active': activeTabIndex === index}]}
-      onClick={() => setState({ activeTabIndex: index })}>
+  const buttons = items.map(({ text }, index) => {
+    const onClick = () => {
+      if (onChange) {
+        onChange({ clickedIndex: index });
+      }
+      setState({ activeTabIndex: index });
+    };
+
+    return (<div class={['tab-control__tab-button', {'tab-control__tab-button__active': activeTabIndex === index}]}
+      onClick={onClick}>
       {text}
-    </div>
-  ));
+    </div>);
+  });
 
   const panels = items.map(({ content }, index) => (
     <div class={['tab-control__tab-panel', {'tab-control__tab-panel__active': activeTabIndex === index}]}>
