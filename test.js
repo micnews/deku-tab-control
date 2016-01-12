@@ -75,3 +75,40 @@ test('tab control 0 tabs', function (t) {
 
   t.end();
 });
+
+test('tab control removeOnHide', function (t) {
+  const items = [
+    { text: 'Tab 1', content: <div>Tab 1 content</div> },
+    { text: 'Tab 2', content: <div>Tab 2 content</div> }
+  ];
+
+  t.equal(renderString(tree(
+    <TabControl items={items} removeOnHide={true} />
+  )), tsml`
+    <div class="tab-control">
+      <div class="tab-control__tab-buttons">
+        <div class="tab-control__tab-button tab-control__tab-button__active">Tab 1</div>
+        <div class="tab-control__tab-button">Tab 2</div>
+      </div>
+      <div class="tab-control__tab-panels">
+        <div class="tab-control__tab-panel tab-control__tab-panel__active"><div>Tab 1 content</div></div>
+      </div>
+    </div>
+  `);
+
+  t.equal(renderString(tree(
+    <TabControl items={items} removeOnHide={true} activeTabIndex={1} />
+  )), tsml`
+    <div class="tab-control">
+      <div class="tab-control__tab-buttons">
+        <div class="tab-control__tab-button">Tab 1</div>
+        <div class="tab-control__tab-button tab-control__tab-button__active">Tab 2</div>
+      </div>
+      <div class="tab-control__tab-panels">
+        <div class="tab-control__tab-panel tab-control__tab-panel__active"><div>Tab 2 content</div></div>
+      </div>
+    </div>
+  `);
+
+  t.end();
+});
