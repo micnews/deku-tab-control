@@ -119,7 +119,7 @@ test('custom class', function (t) {
   ];
 
   const html = renderString(tree(
-    <TabControl customClass='bloop' items={items} />
+    <TabControl class='bloop' items={items} />
   ));
 
   t.equal(html, tsml`
