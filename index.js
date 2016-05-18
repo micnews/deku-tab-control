@@ -38,7 +38,7 @@ export function render ({ props, state }, setState) {
   ));
 
   return (
-    <div class={`tab-control ${customClass}`}>
+    <div class={['tab-control', customClass]}>
       <div class='tab-control__tab-buttons'>
         {buttons}
       </div>
