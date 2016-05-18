@@ -112,3 +112,25 @@ test('tab control removeOnHide', function (t) {
 
   t.end();
 });
+
+// test('custom class', function (t) {
+//   const items = [
+//     { text: 'Tab 1', content: <div>Tab 1 content</div> }
+//   ];
+
+//   t.equal(renderString(tree(
+//     <TabControl items={items} customClass='bloopy' removeOnHide={true} activeTabIndex={1} />
+//   )), tsml`
+//     <div class="tab-control bloopy">
+//       <div class="tab-control__tab-buttons">
+//         <div class="tab-control__tab-button">Tab 1</div>
+//         <div class="tab-control__tab-button tab-control__tab-button__active">Tab 2</div>
+//       </div>
+//       <div class="tab-control__tab-panels">
+//         <div class="tab-control__tab-panel tab-control__tab-panel__active"><div>Tab 2 content</div></div>
+//       </div>
+//     </div>
+//   `);
+
+//   t.end();
+// });
