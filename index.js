@@ -10,7 +10,7 @@ export function initialState (props) {
 }
 
 export function render ({ props, state }, setState) {
-  const { items, onChange, removeOnHide } = props;
+  const { items, onChange, removeOnHide, customClass } = props;
   const { activeTabIndex } = state;
 
   const buttons = items.map(({ text }, index) => {
@@ -38,7 +38,7 @@ export function render ({ props, state }, setState) {
   ));
 
   return (
-    <div class='tab-control'>
+    <div class='tab-control ${customClass}'>
       <div class='tab-control__tab-buttons'>
         {buttons}
       </div>
