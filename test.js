@@ -112,3 +112,26 @@ test('tab control removeOnHide', function (t) {
 
   t.end();
 });
+
+test('custom class', function (t) {
+  const items = [
+    { text: 'Tab 1', content: <div>Tab 1 content</div> }
+  ];
+
+  const html = renderString(tree(
+    <TabControl class='bloop' items={items} />
+  ));
+
+  t.equal(html, tsml`
+    <div class="tab-control bloop">
+      <div class="tab-control__tab-buttons">
+        <div class="tab-control__tab-button tab-control__tab-button__active">Tab 1</div>
+      </div>
+      <div class="tab-control__tab-panels">
+        <div class="tab-control__tab-panel tab-control__tab-panel__active"><div>Tab 1 content</div></div>
+      </div>
+    </div>
+  `, 'class \'bloop\' gets added');
+
+  t.end();
+});
