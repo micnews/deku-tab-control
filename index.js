@@ -13,6 +13,12 @@ export function render ({ props, state }, setState) {
   const { items, onChange, removeOnHide } = props;
   const { activeTabIndex } = state;
 
+  if (process.browser) {
+    window.addEventListener('deku-tab-control:setState', function (e) {
+      setState({ activeTabIndex: e.detail.activeTab });
+    });
+  }
+
   const buttons = items.map(({ text }, index) => {
     const onClick = () => {
       if (onChange) {
