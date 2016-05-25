@@ -3,22 +3,17 @@
 
 import element from 'magic-virtual-element';
 
-export function initialState (props) {
-  return {
-    activeTabIndex: props.activeTabIndex || 0
-  };
-}
+export default { render };
 
-export function render ({ props, state }, setState) {
+export function render ({ props }) {
   const { items, onChange, removeOnHide } = props;
-  const { activeTabIndex } = state;
+  let { activeTabIndex = 0 } = props;
 
   const buttons = items.map(({ text }, index) => {
     const onClick = () => {
       if (onChange) {
         onChange({ clickedIndex: index });
       }
-      setState({ activeTabIndex: index });
     };
 
     return (<div class={['tab-control__tab-button', {'tab-control__tab-button__active': activeTabIndex === index}]}
@@ -48,5 +43,3 @@ export function render ({ props, state }, setState) {
     </div>
   );
 }
-
-export default { initialState, render };
